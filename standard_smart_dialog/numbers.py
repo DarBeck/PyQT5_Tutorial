@@ -5,8 +5,8 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 import numberformatdlg1
-import numberformatdlg2
-import numberformatdlg3
+# import numberformatdlg2
+# import numberformatdlg3
 
 
 class Form(QDialog):
@@ -45,8 +45,8 @@ class Form(QDialog):
         self.setLayout(layout)
 
         format_button1.clicked.connect(self.setNumberFormat1)
-        format_button2.clicked.connect(self.setNumberFormat2)
-        format_button3.clicked.connect(self.setNumberFormat3)
+        # format_button2.clicked.connect(self.setNumberFormat2)
+        # format_button3.clicked.connect(self.setNumberFormat3)
 
         self.setWindowTitle("Numbers")
         self.refreshTable()
@@ -87,24 +87,24 @@ class Form(QDialog):
             self.format = dialog.numberFormat()
             self.refreshTable()
 
-    def setNumberFormat2(self):
-        try:
-            dialog = numberformatdlg2.NumberFormatDlg(self.format, self)
-            dialog.changed.connect(self.refreshTable)
-            dialog.show()
-        except Exception as e:
-            print(e)
-
-    def setNumberFormat3(self):
-        try:
-            if self.numberFormatDlg is None:
-                self.numberFormatDlg = numberformatdlg3.NumberFormatDlg(
-                        self.format, self.refreshTable, self)
-            self.numberFormatDlg.show()
-            self.numberFormatDlg.raise_()
-            self.numberFormatDlg.activateWindow()
-        except Exception as e:
-            print(e)
+    # def setNumberFormat2(self):
+    #     try:
+    #         dialog = numberformatdlg2.NumberFormatDlg(self.format, self)
+    #         dialog.changed.connect(self.refreshTable)
+    #         dialog.show()
+    #     except Exception as e:
+    #         print(e)
+    #
+    # def setNumberFormat3(self):
+    #     try:
+    #         if self.numberFormatDlg is None:
+    #             self.numberFormatDlg = numberformatdlg3.NumberFormatDlg(
+    #                     self.format, self.refreshTable, self)
+    #         self.numberFormatDlg.show()
+    #         self.numberFormatDlg.raise_()
+    #         self.numberFormatDlg.activateWindow()
+    #     except Exception as e:
+    #         print(e)
 
 
 app = QApplication(sys.argv)
